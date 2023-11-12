@@ -53,7 +53,7 @@
 
 //? Container divi oluşturuldu
 const container = document.createElement('div')
-container.classList.add('container', 'd-flex', 'align-items-center', 'flex-column', 'my-3')
+container.classList.add('container', 'd-flex', 'align-items-center','gap-2', 'flex-column', 'my-3')
 // container.setAttribute('class', 'container')
 
 document.body.append(container)
@@ -66,14 +66,19 @@ btn.textContent = 'Countries'
 
 container.append(btn)
 
+btn.addEventListener('click', ulkeOlusturma)
 
 //? Ülkeler card yapısının fonksiyonu
 
 function ulkeOlusturma() {
     const ulkelerDiv = document.createElement('div')
-    ulkelerDiv.setAttribute('class', 'd-flex gap-2 mt-2')
+    ulkelerDiv.setAttribute('class', 'row  mt-2')
 
     countries.forEach((ulke) => {
+
+        const col = document.createElement('div')
+        col.classList.add('col-3')
+
         const cardDiv = document.createElement('div')
         cardDiv.classList.add('card', 'text-center')
         cardDiv.style.width = '18rem'
@@ -92,11 +97,11 @@ function ulkeOlusturma() {
         const cardText = document.createElement('p')
         cardText.classList.add('card-text')
 
-        let content = `${ulke.capital} - ${ulke.languages} - ${ulke.currency}`
+        let content = `${ulke.capital} - ${ulke.languages} - ${ulke.region}`
         cardText.textContent = content
 
         const pop = document.createElement('a')
-        pop.setAttribute('btn btn-warning w-100')
+        pop.setAttribute('class', 'btn btn-warning w-100')
         pop.textContent = ulke.population
 
         cardDiv.append(cardImg)
@@ -107,8 +112,35 @@ function ulkeOlusturma() {
 
         cardDiv.append(cardBody)
 
-        ulkelerDiv.append(cardDiv)
+        col.append(cardDiv)
+
+        ulkelerDiv.append(col)
     })
 
     container.append(ulkelerDiv)
+}
+
+//? Button oluşturma
+
+const btn2 = document.createElement('button')
+btn2.setAttribute('class', 'btn btn-success mt-2')
+btn2.textContent = 'Population'
+
+container.append(btn2)
+
+btn2.addEventListener('click', populasyonBulma)
+
+function populasyonBulma(){
+    const populationDiv = document.createElement('div')
+    
+    countries.forEach((ulke) => {
+
+
+        
+
+    })
+
+
+
+
 }
