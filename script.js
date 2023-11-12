@@ -1,8 +1,34 @@
 // console.log(countries)
-
-
-
 const input = document.getElementById('input')
+
+
+for(let i = 0; i < countries.length; i++){
+    const p = document.createElement('p')
+    p.style.color = 'gray'
+    p.innerHTML = countries[i]['name']
+    document.body.append(p)
+}
+
+input.addEventListener('keyup', (element) => {
+    console.log(element.key)
+    console.log(element.keyCode)
+
+    
+    if(element.keyCode == 13) {
+
+        countries.filter((ulke) =>{
+            if(ulke.name == input.value) {
+                const p = document.createElement('p')
+                p.style.color = 'red'
+                p.innerHTML = `${ulke.name} - ${ulke.capital}`
+                document.body.append(p)
+            }
+        })
+    }
+})
+
+
+
 //? Attribute Ekleme 
 input.setAttribute('placeholder', 'Değer')
 //? Atribute içindeki bilgiyi getirme
